@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:willyweather/services/weather_info_service.dart';
 import 'package:stream_transform/stream_transform.dart';
 

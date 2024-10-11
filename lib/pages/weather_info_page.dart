@@ -57,8 +57,6 @@ class _WeatherInfoPageState extends State<WeatherInfoPage> {
         ),
         body: BlocConsumer<WeatherBloc, WeatherState>(
           bloc: loadWeatherBloc,
-          listenWhen: (previous, current) => current is WeatherActionState,
-          buildWhen: (previous, current) => current is! WeatherActionState,
           listener: (context, state) {},
           builder: (context, state) {
             switch (state.runtimeType) {

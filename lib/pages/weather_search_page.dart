@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 import 'package:willyweather/features/search/bloc/search_bloc.dart';
 import 'package:willyweather/features/search/bloc/search_event.dart';
 import 'package:willyweather/features/search/bloc/search_state.dart';
-import 'package:willyweather/models/weather_info_model.dart';
 import 'package:willyweather/services/weather_info_service.dart';
 
 class WeatherSearchPage extends StatefulWidget {
@@ -35,8 +34,6 @@ class _WeatherSearchPageState extends State<WeatherSearchPage> {
             ),
             BlocConsumer<WeatherSearchBloc, WeatherSearchState>(
               bloc: loadWeatherBloc,
-              // listenWhen: (previous, current) => current is WeatherActionState,
-              // buildWhen: (previous, current) => current is! WeatherActionState,
               listener: (context, state) {},
               builder: (context, state) {
                 switch (state.runtimeType) {
@@ -56,7 +53,7 @@ class _WeatherSearchPageState extends State<WeatherSearchPage> {
                             children: [
                               Text(successState.weatherInfo.cityName),
                               Container(
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                       maxWidth: 150, maxHeight: 150),
                                   child: Lottie.asset(getWeatherAnimation(
                                       successState.weatherInfo.mainCondition))),
@@ -80,8 +77,7 @@ class _WeatherSearchPageState extends State<WeatherSearchPage> {
                             child: Column(
                           children: [
                             Lottie.asset("assets/failure.json"),
-                            Text(
-                                "Failed to load weather data!\nPlease try again later.")
+                            const Text("No city found with that name!")
                           ],
                         )));
                   default:
